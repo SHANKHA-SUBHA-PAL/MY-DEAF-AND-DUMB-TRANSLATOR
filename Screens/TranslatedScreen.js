@@ -17,7 +17,7 @@ allSplit:[]
 }
 
 showSign= async(text)=>{
-    var enteredText=text.split(' ')
+    var enteredText=text.split('')
     console.log(enteredText)
     
     this.setState({allSplit:enteredText})
@@ -38,16 +38,21 @@ componentDidMount(){
                 <Myheader title='DEAF AND DUMB TRANSLATOR' />
                
                 <View style=
-                {{flexDirection:'row',justifyContent:'space-between',flexWrap:'wrap'}}>
+                {{flexDirection:'row',justifyContent:'space-evenly',flexWrap:'wrap'}}>
                     
                 {
                    this.state.allSplit.map((text,index)=>{
-
-                    var newText= text.split('');
-                     newText.map((word))
-                    
-                })
-            }
+                       if(text===" "){
+                           text="space"
+                       }
+                    return(   
+                       <View>
+                       <Image source={require('../SIGN LANGUAGE/A.png')}
+                       style={{height:240,width:250}}/>    
+                       </View>
+                   )
+                   })  
+                   }
                      
                 
                 </View>
