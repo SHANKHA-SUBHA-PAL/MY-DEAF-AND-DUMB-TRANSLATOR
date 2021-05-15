@@ -20,7 +20,7 @@ return(
 
 centerComponent={{text:this.props.title,style:{color:'blue',fontSize:13,fontWeight:'bold'}}}
 
-backgroundColor='#ab15df'
+backgroundColor='#ff5722'
 />
 
 

@@ -4,49 +4,52 @@ import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image } from 'reac
 import Myheader from '../MyComponents/MyHeader'
 
 export default class TranslatedScreen extends React.Component {
-constructor(){
-super()
+constructor(props){
+super(props)
 
 this.state={
 
-sign:'',
+
+text: this.props.navigation.getParam("text"),
 allSplit:[]
 
 }
 }
 
-showSign=(text)=>{
-var enteredText=text.split('')
-
-
-this.setState({allSplit:enteredText})
-
+showSign= async(text)=>{
+    var enteredText=text.split(' ')
+    console.log(enteredText)
+    
+    this.setState({allSplit:enteredText})
+    console.log(this.state.allSplit)
+    
 }
 
+componentDidMount(){
+    this.showSign(this.state.text)
+}
+
+
     render() {
+        console.log(this.state.text)
         return (
 
             <View>
                 <Myheader title='DEAF AND DUMB TRANSLATOR' />
-                <View style={{ flex: 1 }}>
-                   {
+               
+                <View style=
+                {{flexDirection:'row',justifyContent:'space-between',flexWrap:'wrap'}}>
+                    
+                {
                    this.state.allSplit.map((text,index)=>{
-                    return(   
-                       <View>
-                       <Text>{text}</Text>
-                       <Image source={require('../SIGN LANGUAGE/'+text.toUpperCase()+'.png')}
-                       style={{height:200,width:200}}/>    
-                       </View>
-                   )
-                   })  
-                   }
+
+                    var newText= text.split('');
+                     newText.map((word))
+                    
+                })
+            }
                      
-                    <TextInput style={styles.tI} onChangeText={(text)=>{this.setState({sign:text})}}></TextInput>
-                    <TouchableOpacity style={styles.button} onPress={()=>{this.showSign(this.state.sign)}}>
-                        <Text>
-                            TRANSLATE
-                        </Text>
-                    </TouchableOpacity>
+                
                 </View>
             </View>
         )
